@@ -1,8 +1,8 @@
-# Организация бэкапов на примере доп хранилища на хэцнере
+# Организация бэкапов на примере доп хранилища хостера
 
 Допустим у нас имеется доп хранилище которое поддерживает подключение по ssh/sftp на нестандартном порту:
 
-    Сервер: u1111.your-storagebox.de
+    Сервер: u1111.storagebox.com
     Пользователь: u11111
     Пароль: 111111111111111
 
@@ -27,7 +27,7 @@
 
 DATE=$(date +%Y-%m-%d-t-%H-%M-%S)
 
-rsync --progress --delete  -e 'ssh -p 2899' --recursive /mydata/ u11111@u1111.your-storagebox.de:/home/copy/ > /opt/scripts_backup/logs/sync-actual_$DATE.log
+rsync --progress --delete  -e 'ssh -p 2899' --recursive /mydata/ u11111@u1111.storagebox.com:/home/copy/ > /opt/scripts_backup/logs/sync-actual_$DATE.log
 
 find /opt/scripts_backup/logs/sync-actual_*.log -type f -mtime +3 -exec rm {} \;
 
@@ -48,13 +48,13 @@ echo "start log" > /opt/scripts_backup/logs/sync_week_$DATE_dir.log
 
 echo "$DATE_log - create dir" >> /opt/scripts_backup/logs/sync_week_$DATE_dir.log
 
-ssh -p2899 u11111@u1111.your-storagebox.de mkdir backup/$DATE_dir/
+ssh -p2899 u11111@u1111.storagebox.com mkdir backup/$DATE_dir/
 
 sleep 3s
 
 echo "$DATE_log - copy files" >> /opt/scripts_backup/logs/sync_week_$DATE_dir.log
 
-ssh -p2899 u11111@u1111.your-storagebox.de cp -R copy/* backup/$DATE_dir/
+ssh -p2899 u11111@u1111.storagebox.com cp -R copy/* backup/$DATE_dir/
 
 echo "$DATE_log - finish copy" >> /opt/scripts_backup/logs/sync_week_$DATE_dir.log
 
