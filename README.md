@@ -1,7 +1,7 @@
 # В данном репозитории публикую скрипты которыми пользуюсь или разработал
 
 1. [Организация бэкапов на примере доп хранилища хостера, с помощью rsync/ssh](script_backup_rsunc_ssh.md)
-2. update-blocked-ips.sh - формируем список для блокировки Nginx'ом   
+2. [update-blocked-ips.sh](update-blocked-ips.sh) - формируем список для блокировки Nginx'ом   
 для подключения:
 ```bash
 location / {
