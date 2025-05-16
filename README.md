@@ -26,4 +26,4 @@ server {
     }
 }
 ```
-3. [restart_exited.sh](restart_exited.sh) - скрипт который поднимет упавшие Docker контейнеры, просто добавить его в cron с нужной переодичностью
+3. [docker_restart_exited.sh](docker_restart_exited.sh) - скрипт который поднимет упавшие Docker контейнеры, просто добавить его в cron с нужной переодичностью
